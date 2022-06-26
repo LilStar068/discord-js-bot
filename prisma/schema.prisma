@@ -1,0 +1,28 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["mongodb"]
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("mongodbUri")
+}
+
+model Guild {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  guildId           String  @unique
+  welcomerEnabled   Boolean @default(false)
+  welcomerMessage   String  @default("Welcome |user_name| to the server!")
+  welcomerChannelId String
+}
+
+model User {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  userId      String @unique
+  rps_wins    Int    @default(0)
+  rps_losses  Int    @default(0)
+  rps_ties    Int    @default(0)
+  wallet      Int    @default(200)
+  bank        Int    @default(100)
+  bankStorage Int    @default(100)
+}
