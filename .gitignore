@@ -45,3 +45,6 @@ debug.json
 
 *.test.ts
 *.test.js
+
+.env
+.env.*
